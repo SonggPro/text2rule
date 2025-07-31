@@ -1,0 +1,8 @@
+SomeOtherColumn,Calculator ID,Lower Limit,Upper Limit,Notes
+Info1,1,90,110,Calc A limits
+Info2,1,1.5,2.5,Calc A limits
+Info3,2,0.8,1.2,Calc B limits
+Info4,3,-5,5,Calc C limits
+Info5,4,,10,Missing lower limit
+Info6,5,20,abc,Invalid upper limit
+Info7,6,50,70,ID 6 - No results in JSONL
