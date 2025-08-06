@@ -4,7 +4,12 @@
 
 from typing import Dict, Any, Optional
 import os
+import dotenv
 
+dotenv.load_dotenv()
+
+API_KEY = os.getenv("API_KEY")
+BASE_URL = os.getenv("BASE_URL")
 
 class ModelConfig:
     """模型配置类"""
@@ -13,15 +18,15 @@ class ModelConfig:
     MODELS = {
         "gpt-4o-mini": {
             "model": "gpt-4o-mini-2024-07-18",
-            "api_key": "",
-            "base_url": "",
+            "api_key": API_KEY,
+            "base_url": BASE_URL,
             "extraction_model": "gpt-4o-mini-2024-07-18",
             "conversion_model": "gpt-4o-mini-2024-07-18"
         },
         "qwen": {
             "model": "qwen2.5-72b-instruct",
-            "api_key": "",
-            "base_url": "",
+            "api_key": API_KEY,
+            "base_url": BASE_URL,
             "extraction_model": "qwen2.5-72b-instruct",
             "conversion_model": "qwen2.5-72b-instruct",
             "model_info": {
@@ -35,15 +40,15 @@ class ModelConfig:
         },
         "claude-sonnet": {
             "model": "claude-3-7-sonnet-20250219",
-            "api_key": "",
-            "base_url": "",
+            "api_key": API_KEY,
+            "base_url": BASE_URL,
             "extraction_model": "claude-3-7-sonnet-20250219",
             "conversion_model": "claude-3-7-sonnet-20250219"
         },
         "gpt-4.1-mini": {
             "model": "gpt-4.1-mini-2025-04-14",
-            "api_key": "",
-            "base_url": "",
+            "api_key": API_KEY,
+            "base_url": BASE_URL,
             "extraction_model": "gpt-4.1-mini-2025-04-14",
             "conversion_model": "gpt-4.1-mini-2025-04-14"
         }

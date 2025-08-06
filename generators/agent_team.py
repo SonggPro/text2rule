@@ -31,31 +31,20 @@ class AgentTeam:
     
     def _create_agents(self) -> List[AssistantAgent]:
         """创建Agent列表"""
-        # 简化的系统消息
-        analyst_message = "你是一位医学分析专家，负责分析医疗问题并提供解决方案。"
-        coder_message = "你是一位编程专家，负责根据分析结果生成Python函数。"
-        checker_message = "你是一位代码检查专家，负责检查生成的代码是否正确。"
+        from config import PromptConfig
         
-        agents = [
-            AssistantAgent(
-                name="analyst",
-                system_message=analyst_message,
-                llm_config={"config_list": [self.autogen_client]},
-                human_input_mode="NEVER"
-            ),
-            AssistantAgent(
-                name="coder",
-                system_message=coder_message,
-                llm_config={"config_list": [self.autogen_client]},
-                human_input_mode="NEVER"
-            ),
-            AssistantAgent(
-                name="checker",
-                system_message=checker_message,
+        # 获取任务类型的Agent系统消息
+        agent_messages = PromptConfig.get_all_agent_messages(self.task_type)
+        
+        agents = []
+        for agent_type, system_message in agent_messages.items():
+            agent = AssistantAgent(
+                name=agent_type,
+                system_message=system_message,
                 llm_config={"config_list": [self.autogen_client]},
                 human_input_mode="NEVER"
             )
-        ]
+            agents.append(agent)
         
         return agents
     
